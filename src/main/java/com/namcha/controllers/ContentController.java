@@ -32,6 +32,12 @@ public class ContentController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/retrieve")
     public List<Content> retrieve() {
-        return new ArrayList<Content>();
+        Content content = new Content();
+        content.setEventName("Programming");
+
+        List<Content> contents = new ArrayList<Content>();
+        contents.add(content);
+
+        return contents;
     }
 }
