@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by archer on 11/22/2016 AD.
  */
@@ -12,25 +15,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/content")
 public class ContentController {
 
-
-    @RequestMapping(method= RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST, path = "/create")
     public String create(Content content) {
 
-        try{
-
-
+        try {
             // assume that service should throw an exception when error occured
-            if(content.getEventName().isEmpty())
-            {
+            if (content.getEventName().isEmpty()) {
                 throw new Exception();
             }
-
-
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             return "Fail";
         }
 
         return "Success";
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/retrieve")
+    public List<Content> retrieve() {
+        return new ArrayList<Content>();
     }
 }
