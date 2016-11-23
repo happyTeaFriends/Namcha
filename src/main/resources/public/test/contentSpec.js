@@ -1,9 +1,18 @@
-describe("A suite is just a function", function() {
-  var a;
+describe("content", function() {
+	
+	describe("when createContent is called.", function() {
+		beforeEach(function() {
+			jasmine.Ajax.install();
+		});
 
-  it("and so is a spec", function() {
-    a = true;
+		afterEach(function() {
+			jasmine.Ajax.uninstall();
+		});
 
-    expect(a).toBe(true);
-  });
+		it("should call with url content", function() {
+			createContent();
+			
+			expect(jasmine.Ajax.requests.mostRecent().url).toBe('content');
+		});
+	});
 });
