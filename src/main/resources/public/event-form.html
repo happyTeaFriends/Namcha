@@ -84,12 +84,10 @@
         });
 
     function createContent(){
-        var formData = JSON.parse(JSON.stringify(jQuery('#contentForm').serializeArray()));
-        console.log(formData);
         $.ajax({
           type: "POST",
           url: "content/create",
-          data: formData,
+          data: #contentForm').serialize(),
           success: function(data){
             console.log(data);
           },
