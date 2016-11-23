@@ -3,12 +3,21 @@ package com.namcha.models;
 import java.time.OffsetDateTime;
 
 public class Content {
+	private String id;
 	private String category;
 	private String eventName;
 	private OffsetDateTime startDate;
 	private OffsetDateTime endDate;
 	private String location;
 	private String description;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getCategory() {
 		return category;

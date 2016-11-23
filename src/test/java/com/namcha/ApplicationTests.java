@@ -1,5 +1,6 @@
 package com.namcha;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,4 +14,8 @@ public class ApplicationTests {
 	public void contextLoads() {
 	}
 
+	@Test
+	public void testAssertionModels () {
+		Assert.assertEquals(1, 1);
+	}
 }

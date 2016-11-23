@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-//@RequestMapping("/api/list")
+@RequestMapping("/api/list")
 public class EventListController {
 
     @RequestMapping(value="html", method=RequestMethod.GET)
@@ -14,7 +14,7 @@ public class EventListController {
     }
 
     public String loadListRecord(){
-        
+
 
         return "";
     }

@@ -5,11 +5,11 @@
 // directory.
 requirejs.config({
     baseUrl: 'lib',
-    paths: {
-        app: '../app',
-        jquery: 'jquery/dist/jquery',
-        bootstrap: 'bootstrap/dist/js/bootstrap'
-    }
+         paths: {
+             app: '../app',
+             jquery: 'jquery/dist/jquery',
+             bootstrap: 'bootstrap/dist/js/bootstrap'
+         }
 });
 
 // Start loading the main app file. Put all of
