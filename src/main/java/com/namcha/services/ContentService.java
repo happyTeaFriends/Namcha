@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 import com.namcha.models.Content;
 import com.namcha.repositories.ContentRepository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class ContentService {
 
@@ -18,5 +21,17 @@ public class ContentService {
 		}
 
 		return contentRepository.save(content);
+	}
+
+	public List<Content> retrieve(){
+
+		List<Content> contents = new ArrayList<Content>();
+
+		for (Content content: contentRepository.findAll())
+		{
+			contents.add(content);
+		}
+
+		return contents;
 	}
 }
