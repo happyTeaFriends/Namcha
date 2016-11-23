@@ -4,3 +4,7 @@
 /.settings/
 /src/main/resources/public/lib/
 /src/main/resources/public/node_modules/
+.idea
+.idea/*
+/*.iml
+**.iml
