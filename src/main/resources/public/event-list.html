@@ -1,31 +1,16 @@
 <div class="container">
-    <h2>Event List</h2>
+    <h2>Table</h2>
     <p></p>
-    <table class="table table-hover">
+    <table class="table table-hover" data-toggle="table" id="table" data-url="data.json">
         <thead>
         <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Email</th>
+            <th data-field="id">#</th>
+            <th data-field="eventName">Event Name</th>
+            <th data-field="startDt">Start Date</th>
+            <th data-field="endDt">End Date</th>
+            <th></th>
         </tr>
         </thead>
-        <tbody>
-        <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>john@example.com</td>
-        </tr>
-        <tr>
-            <td>Mary</td>
-            <td>Moe</td>
-            <td>mary@example.com</td>
-        </tr>
-        <tr>
-            <td>July</td>
-            <td>Dooley</td>
-            <td>july@example.com</td>
-        </tr>
-        </tbody>
     </table>
 </div>
 <div class="container">
@@ -33,4 +18,3 @@
         <a href="event-form.html" class="btn btn-primary">เพิ่ม</a>
     </div>
 </div>
-
