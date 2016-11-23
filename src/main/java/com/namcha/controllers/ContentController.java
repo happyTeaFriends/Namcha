@@ -1,10 +1,8 @@
 package com.namcha.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,12 +27,6 @@ public class ContentController {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Content> getAll() {
-
-        Content content = new Content();
-        content.setEventName("Programming");
-
-        List<Content> contents = new ArrayList<Content>();
-        contents.add(content);
-        return contents;
+        return contentService.retrieve();
     }
 }
