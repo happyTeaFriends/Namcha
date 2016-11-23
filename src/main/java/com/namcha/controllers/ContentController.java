@@ -21,20 +21,14 @@ public class ContentController {
 	@Autowired
 	private ContentService contentService;
 
-	@RequestMapping(method = RequestMethod.POST, path = "/create")
-	public String create(Content content) {
-
-		try {
-			contentService.create(content);
-		} catch (Exception e) {
-			return "Fail";
-		}
-
-		return "Success";
+	@RequestMapping(method = RequestMethod.POST)
+	public Content create(Content content) {
+		return contentService.create(content);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, path = "/retrieve")
-	public List<Content> retrieve() {
+	@RequestMapping(method = RequestMethod.GET)
+	public List<Content> getAll() {
+
 		OffsetDateTime now = OffsetDateTime.now();
 
 		Content content1 = new Content();
@@ -54,6 +48,7 @@ public class ContentController {
 		List<Content> contents = new ArrayList<Content>();
 		contents.add(content1);
 		contents.add(content2);
+
 		return contents;
 	}
 }

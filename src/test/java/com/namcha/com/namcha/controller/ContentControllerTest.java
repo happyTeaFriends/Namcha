@@ -1,18 +1,18 @@
 package com.namcha.com.namcha.controller;
 
-import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Spy;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.namcha.controllers.ContentController;
@@ -27,32 +27,29 @@ public class ContentControllerTest {
 
 	@InjectMocks
 	private ContentController contentController;
-	
+
 	@Mock
 	private ContentService contentService;
-    
-    @Test
-    public void createContentSuccess() {
-        Content content = new Content();
-        content.setEventName("Namcha");
 
-        String result = contentController.create(content);
+	@Test
+	public void createShouldCallContentServiceCreate() {
+		// Arrange
+		Content content = new Content();
+		when(contentService.create(content)).thenReturn(content);
 
-        assertThat(result, equalTo("Success"));
-    }
+		// Action
+		Content actualResult = contentController.create(content);
 
-    @Ignore
-    public void createContentShouldReturnFail_whenContentIsNull() {
-        String result = contentController.create(null);
+		// Assert
+		verify(contentService, times(1)).create(content);
+		assertNotNull(actualResult);
+	}
 
-        assertThat(result, equalTo("Fail"));
-    }
+	@Test
+	public void getAllContent() {
 
-    @Test
-    public void retrieveContent() {
+		List<Content> contents = contentController.getAll();
 
-        List<Content> contents = contentController.retrieve();
-
-        assertThat(contents, notNullValue());
-    }
+		assertThat(contents, notNullValue());
+	}
 }
