@@ -15,20 +15,22 @@
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>-->
 </head>
-<body>
+<body onload="onloadListEvents()">
 <!--<h1 id="response"></h1>-->
 
 <!--<div id="event-list"></div>-->
 <div class="container">
     <h2>Events</h2>
     <p></p>
-    <table class="table table-hover" data-toggle="table" id="table" data-url="data.json">
+    <!--<table class="table table-hover" data-toggle="table" id="table" data-url="data.json">-->
+    <table class="table table-hover" id="table">
         <thead>
         <tr>
             <th data-field="id">#</th>
+            <th data-field="category">Category</th>
             <th data-field="eventName">Event Name</th>
-            <th data-field="startDt">Start Date</th>
-            <th data-field="endDt">End Date</th>
+            <th data-field="startDate">Start Date</th>
+            <th data-field="endDate">End Date</th>
             <th></th>
         </tr>
         </thead>
@@ -43,7 +45,32 @@
 
 
 <script>
+    function onloadListEvents(){
+        $.ajax({
+            type : "GET",
+            contentType : "application/json",
+            url : "/content/retrieve",
+            //data : JSON.stringify(data),
+            dataType : 'json',
+            timeout : 100000,
+            success : function(data) {
+                console.log("SUCCESS: ", data);
+                var $table = $('#table');
+                $('#table').bootstrapTable({
+                    data: data
+                });
 
+                //display(data);
+            },
+            error : function(e) {
+                console.log("ERROR: ", e);
+                //display(e);
+            },
+            done : function(e) {
+                console.log("DONE");
+            }
+        });
+    }
 </script>
 </body>
 
