@@ -1,13 +1,13 @@
 package com.namcha.models;
 
-import java.time.OffsetDateTime;
+import java.util.Date;
 
 public class Content {
 	private String id;
 	private String category;
 	private String eventName;
-	private OffsetDateTime startDate;
-	private OffsetDateTime endDate;
+	private Date startDate;
+	private Date endDate;
 	private String location;
 	private String description;
 
@@ -35,19 +35,19 @@ public class Content {
 		this.eventName = eventName;
 	}
 
-	public OffsetDateTime getStartDate() {
+	public Date getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(OffsetDateTime startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 
-	public OffsetDateTime getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(OffsetDateTime endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 

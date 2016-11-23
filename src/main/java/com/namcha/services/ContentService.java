@@ -23,6 +23,10 @@ public class ContentService {
 		return contentRepository.save(content);
 	}
 
+	public Content get(String id) {
+		return contentRepository.findOne(id);
+	}
+	
 	public List<Content> retrieve(){
 
 		List<Content> contents = new ArrayList<Content>();

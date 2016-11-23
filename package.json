@@ -7,7 +7,8 @@
     "node": "6.9.1"
   },
   "scripts": {
-    "test": "karma start"
+    "test": "karma start",
+    "postinstall": "bower install"
   },
   "author": "",
   "license": "ISC",
