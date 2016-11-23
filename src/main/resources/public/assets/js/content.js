@@ -1,3 +1,10 @@
+function registerSubmitEvent(){
+    $('#contentForm').submit(function(event){
+        event.preventDefault();
+        createContent();
+    });
+}
+
 function createContent(){
     $.ajax({
       type: "POST",
@@ -14,5 +21,5 @@ function createSuccess(){
 }
 
 function createError(){
-    alert('ERROR OCCURRED');
+    alert("error");
 }
