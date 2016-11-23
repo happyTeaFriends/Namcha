@@ -30,21 +30,26 @@ public class ContentController {
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Content> getAll() {
 
-		OffsetDateTime now = OffsetDateTime.now();
-
+		Date now = new Date();
+		Calendar c = Calendar.getInstance(); 
+		c.setTime(now);
+		c.add(Calendar.DATE, 2);
+		
 		Content content1 = new Content();
 		content1.setId("111");
 		content1.setCategory("Programming");
 		content1.setEventName("Certified Scrum Developer");
 		content1.setStartDate(now);
-		content1.setEndDate(now.plusDays(2));
+		content1.setEndDate(c.getTime());
 
 		Content content2 = new Content();
 		content2.setId("222");
 		content2.setCategory("Sharing");
 		content2.setEventName("How to Lose a Guy in 10 Days");
-		content2.setStartDate(now);
-		content2.setEndDate(now.plusDays(2));
+		c.add(Calendar.DATE, 2);
+		content2.setStartDate(c.getTime());
+		c.add(Calendar.DATE, 2);
+		content2.setEndDate(c.getTime());
 
 		List<Content> contents = new ArrayList<Content>();
 		contents.add(content1);
