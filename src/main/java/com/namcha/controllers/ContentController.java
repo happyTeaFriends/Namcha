@@ -28,7 +28,7 @@ public class ContentController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Content> getAll() {
-		
+
 		Content content = new Content();
 		content.setEventName("Programming");
 
