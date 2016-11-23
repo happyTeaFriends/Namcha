@@ -1,8 +1,11 @@
 package com.namcha.com.namcha.controller;
 
-import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.List;
 
@@ -24,34 +27,29 @@ public class ContentControllerTest {
 
 	@InjectMocks
 	private ContentController contentController;
-	
+
 	@Mock
 	private ContentService contentService;
-    
-    @Test
-    public void createContentSuccess() {
-        Content content = new Content();
-        content.setEventName("Namcha");
 
-        String result = contentController.create(content);
+	@Test
+	public void createShouldCallContentServiceCreate() {
+		// Arrange
+		Content content = new Content();
+		when(contentService.create(content)).thenReturn(content);
 
-        assertThat(result, equalTo("Success"));
-    }
+		// Action
+		Content actualResult = contentController.create(content);
 
-    @Test
-    public void createContentShouldReturnFail_whenEventNameIsEmpty() {
-        Content content = new Content();
+		// Assert
+		verify(contentService, times(1)).create(content);
+		assertNotNull(actualResult);
+	}
 
-        String result = contentController.create(content);
+	@Test
+	public void getAllContent() {
 
-        assertThat(result, equalTo("Fail"));
-    }
+		List<Content> contents = contentController.getAll();
 
-    @Test
-    public void retrieveContent() {
-
-        List<Content> contents = contentController.retrieve();
-
-        assertThat(contents, notNullValue());
-    }
+		assertThat(contents, notNullValue());
+	}
 }
