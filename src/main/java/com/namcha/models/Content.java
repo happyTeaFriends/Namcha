@@ -71,11 +71,9 @@ public class Content {
 		this.description = description;
 	}
 
-	public String getButton() { return button; }
+	public String getButton() { return "<a href=\"event-view-share.html?id=" + this.getId() + "\"><button type=\"button\" class=\"btn btn-default\">View</button></a>"; }
 
-	public void setButton(String button) { this.button = button; }
+	public String getStartDateStr() { return new SimpleDateFormat("dd/MM/yyyy").format(this.startDate); }
 
-	public String getStartDateStr() { return new SimpleDateFormat("dd/MM/yyyy").format(this.startDate);}
-
-	public String getEndDateStr() { return new SimpleDateFormat("dd/MM/yyyy").format(this.endDate);}
+	public String getEndDateStr() { return new SimpleDateFormat("dd/MM/yyyy").format(this.endDate); }
 }
