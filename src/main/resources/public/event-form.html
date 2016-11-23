@@ -17,7 +17,7 @@
 <div id="page-wrapper">
     <div class="container">
         <h2>Add Event List</h2>
-        <form>
+        <form id="contentForm">
             <div class="form-group">
                 <label for="category">Category:</label>
                 <select class="form-control" name="category" id="category">
@@ -29,32 +29,36 @@
             </div>
             <div class="form-group">
                 <label for="eventname">Event Name:</label>
-                <input type="text" class="form-control" id="eventname" placeholder="Please enter the event name">
+                <input type="text" class="form-control" id="eventName" name="eventName" placeholder="Please enter the event name">
             </div>
-            <div class="form-group">
-                <label for="startDate" class="col-md-2 control-label">Start Date:</label>
-                <div class='input-group date' id='startDate'>
-                    <input type='text' class="form-control"/>
-                    <span class="input-group-addon">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="startDate" class="col-md-3 control-label">Start Date:</label>
+                    <div class='input-group date' id='startDate'>
+                        <input type='text' class="form-control" name="startDate"/>
+                        <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
+                    </div>
                 </div>
-                <label for="endDate" class="col-md-2 control-label">End Date:</label>
-                <div class='input-group date' id='endDate'>
-                    <input type='text' class="form-control"/>
-                    <span class="input-group-addon">
+                <div class="col-md-6">
+                    <label for="endDate" class="col-md-3 control-label">End Date:</label>
+                    <div class='input-group date' id='endDate'>
+                        <input type='text' class="form-control" name="endDate"/>
+                        <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
                 <label for="location">Location:</label>
-                <input type="text" class="form-control" id="location" placeholder="Training Location">
+                <input type="text" class="form-control" id="location" name="location" placeholder="Training Location">
             </div>
             <div class="form-group">
 
                 <label for="description">Description:</label>
-                <textarea class="form-control" rows="3" id="description"></textarea>
+                <textarea class="form-control" rows="3" id="description" name="description"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">บันทึก</button>
         </form>
@@ -67,10 +71,33 @@
         charset="UTF-8"></script>
 <script type="text/javascript">
 		$(function () {
-            $('#startDate').datetimepicker();
-            $('#endDate').datetimepicker();
-
+            $('#startDate').datetimepicker({
+                format:"DD/MM/YYYY"
+            });
+            $('#endDate').datetimepicker({
+                format:"DD/MM/YYYY"
+            });
+            $('#contentForm').submit(function(event){
+                event.preventDefault();
+                createContent();
+            })
         });
+
+    function createContent(){
+        var formData = JSON.parse(JSON.stringify(jQuery('#contentForm').serializeArray()));
+        console.log(formData);
+        $.ajax({
+          type: "POST",
+          url: "content/create",
+          data: formData,
+          success: function(data){
+            console.log(data);
+          },
+          dataType: 'json'
+        });
+    }
+
+
 </script>
 </body>
 </html>
