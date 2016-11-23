@@ -1,22 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
+    	<script src="lib/jquery/dist/jquery.min.js"></script>
+    	<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
         <script data-main="app" src="lib/requirejs/require.js"></script>
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
     </head>
     <body>
-        <!--<h1 id="response"></h1>-->
-
         <div id="event-list"></div>
-
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-
-    <script>
-        $(function(){
-            $("#event-list").load("event-list.html");
-        });
-    </script>
-
+	    <script>
+	        $(function(){
+	            $("#event-list").load("event-list.html");
+	        });
+	    </script>
     </body>
 </html>
