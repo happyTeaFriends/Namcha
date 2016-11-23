@@ -2,9 +2,77 @@
 <html>
     <head>
         <script data-main="app" src="lib/requirejs/require.js"></script>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
     </head>
-    <body>
+    <body onload="onloadListRecord()">
         <!--<h1 id="response"></h1>-->
-       <a href="event-form.html" >Add Event</a>
+
+        <div class="container">
+            <a href="event-form.html" >Add Event</a>
+            <h2>Table</h2>
+            <p></p>
+            <table class="table table-hover" id="table">
+                <thead>
+                <tr>
+                    <th data-field="id">#</th>
+                    <th data-field="eventName">Event Name</th>
+                    <th data-field="startDt">Start Date</th>
+                    <th data-field="endDt">End Date</th>
+                    <th></th>
+                </tr>
+                </thead>
+            </table>
+        </div>
     </body>
+    <script>
+        var $table = $('#table');
+        var mydata = $.ajax("","POST");
+        /*
+        [
+            {
+                "id": 1,
+                "eventName": "test1",
+                "startDt": "11/11/1111",
+                "endDt": "11/11/1111"
+            },
+            {
+                "id": 2,
+                "eventName": "test2",
+                "startDt": "22/22/2222",
+                "endDt": "22/22/2222"
+            },
+            {
+                "id": 3,
+                "eventName": "test3",
+                "startDt": "33/33/3333",
+                "endDt": "33/33/3333"
+            }
+        ];
+        */
+        $(function () {
+            $('#table').bootstrapTable({
+                data: mydata
+            });
+        });
+
+        function onloadListRecord(){
+            $.ajax({
+                      type: 'POST',
+                      url: '/loadListRecord',
+                      data: JSON.stringify(serverData),
+                      success: function() {
+
+                      },
+                      error: function() {
+
+                      },
+                      contentType: "application/json"
+                  )}
+        }
+    </script>
 </html>

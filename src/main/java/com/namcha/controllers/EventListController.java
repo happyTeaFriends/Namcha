@@ -5,11 +5,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/list")
+//@RequestMapping("/api/list")
 public class EventListController {
 
-    @RequestMapping(method= RequestMethod.GET)
+    @RequestMapping(value="html", method=RequestMethod.GET)
     public String index() {
-        return "This is an event list page.";
+        return "../index.html";
+    }
+
+    public String loadListRecord(){
+        
+
+        return "";
     }
 }
