@@ -1,15 +1,19 @@
 package com.namcha.models;
 
 import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Content {
 	private String id;
 	private String category;
 	private String eventName;
 	private OffsetDateTime startDate;
+	private String startDateStr;
 	private OffsetDateTime endDate;
+	private String endDateStr;
 	private String location;
 	private String description;
+	private String button;
 
 	public String getId() {
 		return id;
@@ -66,4 +70,12 @@ public class Content {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public String getButton() { return button; }
+
+	public void setButton(String button) { this.button = button; }
+
+	public String getStartDateStr() { return this.startDate.format(DateTimeFormatter.ISO_LOCAL_DATE); }
+
+	public String getEndDateStr() { return this.endDate.format(DateTimeFormatter.ISO_LOCAL_DATE); }
 }
