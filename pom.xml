@@ -78,6 +78,9 @@
 				</configuration>
 			</plugin>
 			<plugin>
+				<configuration>
+					<appName>namcha-dev</appName>
+				</configuration>
 				<groupId>com.heroku.sdk</groupId>
 				<artifactId>heroku-maven-plugin</artifactId>
 			</plugin>
