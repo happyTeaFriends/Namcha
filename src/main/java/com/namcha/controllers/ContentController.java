@@ -39,7 +39,7 @@ public class ContentController {
 		content1.setEventName("Certified Scrum Developer");
 		content1.setStartDate(now);
 		content1.setEndDate(now);
-		content1.setButton("<a href=\"event-view-share.html\"><button type=\"button\" class=\"btn btn-default\">View Event Detail</button></a>");
+		content1.setButton("<a href=\"event-view-share.html?id=" + content1.getId() + "\"><button type=\"button\" class=\"btn btn-default\">View Event Detail</button></a>");
 
 		Content content2 = new Content();
 		content2.setId("222");
@@ -47,7 +47,7 @@ public class ContentController {
 		content2.setEventName("How to Lose a Guy in 10 Days");
 		content2.setStartDate(now);
 		content2.setEndDate(now);
-		content2.setButton("<button type=\"button\" class=\"btn btn-default\">View Event Detail</button>");
+		content2.setButton("<a href=\"event-view-share.html?id=" + content2.getId() + "\"><button type=\"button\" class=\"btn btn-default\">View Event Detail</button></a>");
 
 		List<Content> contents = new ArrayList<Content>();
 		contents.add(content1);
