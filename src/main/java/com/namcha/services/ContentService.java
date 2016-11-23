@@ -1,13 +1,13 @@
 package com.namcha.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.namcha.models.Content;
 import com.namcha.repositories.ContentRepository;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class ContentService {
