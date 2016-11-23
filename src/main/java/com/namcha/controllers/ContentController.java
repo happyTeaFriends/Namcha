@@ -25,11 +25,6 @@ public class ContentController {
 	public String create(Content content) {
 
 		try {
-			// assume that service should throw an exception when error occured
-			if (content.getEventName().isEmpty()) {
-				throw new Exception();
-			}
-
 			contentService.create(content);
 		} catch (Exception e) {
 			return "Fail";

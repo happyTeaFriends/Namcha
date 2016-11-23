@@ -4,71 +4,73 @@
     <title>Namcha</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script data-main="app" src="lib/requirejs/require.js"></script>
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css">
 </head>
 <body>
-
-
-
 <style>
-
     #page-wrapper {
-
         padding-top: 0;
-
     }
 
 </style>
-
 <div id="page-wrapper">
-        <div class="container">
-            <h2>Add Event List</h2>
-            <form>
-                <div class="form-group">
-                    <label for="category">Category:</label>
-                    <select class="form-control" name="category" id="category">
-                        <option>Please select</option>
-                        <option value="programming">Programming</option>
-                        <option value="marketing">Marketing</option>
-                        <option value="testing">Testing</option>
-                    </select>
+    <div class="container">
+        <h2>Add Event List</h2>
+        <form>
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select class="form-control" name="category" id="category">
+                    <option>Please select</option>
+                    <option value="programming">Programming</option>
+                    <option value="marketing">Marketing</option>
+                    <option value="testing">Testing</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="eventname">Event Name:</label>
+                <input type="text" class="form-control" id="eventname" placeholder="Please enter the event name">
+            </div>
+            <div class="form-group">
+                <label for="startDate" class="col-md-2 control-label">Start Date:</label>
+                <div class='input-group date' id='startDate'>
+                    <input type='text' class="form-control"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
                 </div>
-                <div class="form-group">
-                    <label for="eventname">Event Name:</label>
-                    <input type="text" class="form-control" id="eventname" placeholder="Please enter the event name">
+                <label for="endDate" class="col-md-2 control-label">End Date:</label>
+                <div class='input-group date' id='endDate'>
+                    <input type='text' class="form-control"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
                 </div>
-                <div class="form-group">
-                    <label for="start-date" class="col-md-2 control-label">Start Date:</label>
-                    <div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="start-date" data-link-format="yyyy-mm-dd">
-                        <input class="form-control" size="16" type="text" value="" readonly>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                    </div>
-                    <input type="hidden" id="start-date" value="" />
-                    <label for="end-date" class="col-md-2 control-label">End Date:</label>
-                    <div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="end-date" data-link-format="yyyy-mm-dd">
-                        <input class="form-control" size="16" type="text" value="" readonly>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                    </div>
-                    <input type="hidden" id="end-date" value="" /><br/>
-                </div>
-                <div class="form-group">
-                    <label for="location">Location:</label>
-                    <input type="text" class="form-control" id="location" placeholder="Training Location">
-                </div>
-                <div class="form-group">
-                    <label for="description">Description:</label>
-                    <textarea class="form-control" rows="3" id="description"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">บันทึก</button>
-            </form>
-        </div>
+            </div>
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" class="form-control" id="location" placeholder="Training Location">
+            </div>
+            <div class="form-group">
+
+                <label for="description">Description:</label>
+                <textarea class="form-control" rows="3" id="description"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">บันทึก</button>
+        </form>
+    </div>
 </div>
+<!--<script data-main="app" src="lib/requirejs/require.js"></script>-->
+<script src="lib/jquery/dist/jquery.min.js"></script>
+<script src="lib/moment/min/moment.min.js"></script>
+<script type="text/javascript" src="lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"
+        charset="UTF-8"></script>
+<script type="text/javascript">
+		$(function () {
+            $('#startDate').datetimepicker();
+            $('#endDate').datetimepicker();
 
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-
+        });
+</script>
 </body>
 </html>
