@@ -1,11 +1,8 @@
 package com.namcha.controllers;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,8 +27,7 @@ public class ContentController {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Content> getAll() {
-
-		Date now = new Date();
+		/*Date now = new Date();
 
 		Content content1 = new Content();
 		content1.setId("111");
@@ -49,10 +45,8 @@ public class ContentController {
 		content2.setEndDate(now);
 		content2.setButton("<a href=\"event-view-share.html?id=" + content2.getId() + "\"><button type=\"button\" class=\"btn btn-default\">View Event Detail</button></a>");
 
-		List<Content> contents = new ArrayList<Content>();
-		contents.add(content1);
-		contents.add(content2);
+		return contents;*/
 
-		return contents;
-	}
+        return contentService.retrieve();
+    }
 }

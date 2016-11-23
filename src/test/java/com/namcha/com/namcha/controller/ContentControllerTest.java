@@ -56,6 +56,7 @@ public class ContentControllerTest {
 		List<Content> actualResult = contentController.getAll();
 		
 		// Assert
+		verify(contentService, times(1)).retrieve();
 		assertEquals(contents.size(), actualResult.size());
 	}
 }

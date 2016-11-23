@@ -59,7 +59,6 @@
         </form>
     </div>
 </div>
-<!--<script data-main="app" src="lib/requirejs/require.js"></script>-->
 <script src="lib/jquery/dist/jquery.min.js"></script>
 <script src="lib/moment/min/moment.min.js"></script>
 <script type="text/javascript" src="lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"
@@ -67,17 +66,13 @@
 <script src="assets/js/content.js"></script>
 <script type="text/javascript">
     $(function () {
-        $('#startDate').datetimepicker({
-            format:"DD/MM/YYYY"
-        });
-        $('#endDate').datetimepicker({
-            format:"DD/MM/YYYY"
-        });
+        $('#startDate').datetimepicker();
+        $('#endDate').datetimepicker();
         $('#contentForm').submit(function(event){
             event.preventDefault();
             createContent();
         })
-});
+    });
 </script>
 </body>
 </html>
