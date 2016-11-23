@@ -1,5 +1,6 @@
 package com.namcha.models;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Content {
@@ -69,7 +70,7 @@ public class Content {
 	}
 
 	public String getButton() { return "<a href=\"event-view-share.html?id=" + this.getId() + "\"><button type=\"button\" class=\"btn btn-default\">View</button></a>"; }
-	
+
 	public String getStartDateStr() { return new SimpleDateFormat("dd/MM/yyyy").format(this.startDate); }
 
 	public String getEndDateStr() { return new SimpleDateFormat("dd/MM/yyyy").format(this.endDate); }
