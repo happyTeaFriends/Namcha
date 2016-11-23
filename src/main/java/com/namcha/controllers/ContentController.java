@@ -1,11 +1,8 @@
 package com.namcha.controllers;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,29 +27,6 @@ public class ContentController {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Content> getAll() {
-
-		Date now = new Date();
-
-		Content content1 = new Content();
-		content1.setId("111");
-		content1.setCategory("Programming");
-		content1.setEventName("Certified Scrum Developer");
-		content1.setStartDate(now);
-		content1.setEndDate(now);
-		content1.setButton("<a href=\"event-view-share.html\"><button type=\"button\" class=\"btn btn-default\">View Event Detail</button></a>");
-
-		Content content2 = new Content();
-		content2.setId("222");
-		content2.setCategory("Sharing");
-		content2.setEventName("How to Lose a Guy in 10 Days");
-		content2.setStartDate(now);
-		content2.setEndDate(now);
-		content2.setButton("<button type=\"button\" class=\"btn btn-default\">View Event Detail</button>");
-
-		List<Content> contents = new ArrayList<Content>();
-		contents.add(content1);
-		contents.add(content2);
-
-		return contents;
-	}
+        return contentService.retrieve();
+    }
 }
