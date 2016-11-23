@@ -1,5 +1,6 @@
 package com.namcha.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,16 +19,22 @@ import com.namcha.services.ContentService;
 @RequestMapping("/content")
 public class ContentController {
 
-	@Autowired
-	private ContentService contentService;
+    @Autowired
+    private ContentService contentService;
 
-	@RequestMapping(method = RequestMethod.POST)
-	public Content create(@RequestBody Content content) {
-		return contentService.create(content);
-	}
+    @RequestMapping(method = RequestMethod.POST)
+    public Content create(Content content) {
+        return contentService.create(content);
+    }
 
-	@RequestMapping(method = RequestMethod.GET)
-	public List<Content> getAll() {
-		return contentService.retrieve();
-	}
+    @RequestMapping(method = RequestMethod.GET)
+    public List<Content> getAll() {
+
+        Content content = new Content();
+        content.setEventName("Programming");
+
+        List<Content> contents = new ArrayList<Content>();
+        contents.add(content);
+        return contents;
+    }
 }
