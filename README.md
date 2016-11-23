@@ -1,2 +1,0 @@
-# Namcha
-# Test1
