@@ -44,4 +44,28 @@ describe("content", function() {
 
      });
 
+	describe("when validateDateRange is called", function() {
+
+        describe("with start date is before end date", function() {
+            it("should return valid date range", function() {
+                var message = validateDateRange('11/26/2016 4:17 PM', '11/27/2016 4:17 PM');
+
+                expect(message.isValid).toBe(true);
+            });
+        });
+        describe("with start date is the same as end date", function() {
+            it("should return valid date range", function() {
+                var message = validateDateRange('11/27/2016 4:17 PM', '11/27/2016 4:17 PM');
+
+                expect(message.isValid).toBe(true);
+            });
+        });
+        describe("with start date after end date", function() {
+            it("should return invalid date range", function() {
+                var message = validateDateRange('11/28/2016 4:17 PM', '11/27/2016 4:17 PM');
+
+                expect(message.isValid).toBe(false);
+            });
+        });
+    });
 });

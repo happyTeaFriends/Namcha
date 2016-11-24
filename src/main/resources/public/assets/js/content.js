@@ -40,13 +40,13 @@ function submitForm(){
 
 function validate(data){
     var messages = [];
-
     messages.push(validateRequiredField('category', data.category));
     messages.push(validateRequiredField('eventName', data.eventName));
     messages.push(validateRequiredField('startDate', data.startDate));
     messages.push(validateRequiredField('endDate', data.endDate));
     messages.push(validateRequiredField('location', data.location));
     messages.push(validateRequiredField('description', data.description));
+    messages.push(validateDateRange(data.startDate, data.endDate));
 
     return _.filter(messages, function(msg){ return msg.isValid===false });
 
@@ -57,7 +57,16 @@ function validateRequiredField(fieldName, fieldValue) {
     if(!fieldValue){
        return createMessage('กรุณากรอก ' + fieldName);
     }
+    return createMessage();
+}
 
+function validateDateRange(startDate, endDate) {
+    var momentStartDate = moment(startDate);
+    var momentEndDate = moment(endDate);
+
+    if (momentStartDate.isAfter(momentEndDate)) {
+        return createMessage('Start Date ต้องไม่เกิน End Date');
+    }
     return createMessage();
 }
 
