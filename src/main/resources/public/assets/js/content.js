@@ -28,5 +28,13 @@ function createError(){
 function submitForm(){
     var data = $('#contentForm').serializeFormJSON();
     console.log("Data="+data);
-    createContent();
+    if(isValid(data)){
+        createContent();
+    }
+}
+
+function isValid(data){
+
+    //validate here
+    return true;
 }
