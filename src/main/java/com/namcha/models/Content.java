@@ -3,6 +3,8 @@ package com.namcha.models;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.namcha.utils.DateUtil;
+
 public class Content {
 	private String id;
 	private String category;
@@ -71,7 +73,7 @@ public class Content {
 
 	public String getButton() { return "<a href=\"event-view-share.html?id=" + this.getId() + "\"><button type=\"button\" class=\"btn btn-default\">View</button></a>"; }
 
-	public String getStartDateStr() { return new SimpleDateFormat("dd/MM/yyyy").format(this.startDate); }
+	public String getStartDateStr() { return DateUtil.convertToString(this.startDate); }
 
-	public String getEndDateStr() { return new SimpleDateFormat("dd/MM/yyyy").format(this.endDate); }
+	public String getEndDateStr() { return DateUtil.convertToString(this.endDate); }
 }
