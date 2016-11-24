@@ -40,12 +40,12 @@ function submitForm(){
 
 function validate(data){
     var messages = [];
-    messages.push(validateRequiredField('category', data.category));
-    messages.push(validateRequiredField('eventName', data.eventName));
-    messages.push(validateRequiredField('startDate', data.startDate));
-    messages.push(validateRequiredField('endDate', data.endDate));
-    messages.push(validateRequiredField('location', data.location));
-    messages.push(validateRequiredField('description', data.description));
+    messages.push(validateRequiredField('Category', data.category));
+    messages.push(validateRequiredField('Event Name', data.eventName));
+    messages.push(validateRequiredField('Start Date', data.startDate));
+    messages.push(validateRequiredField('End Date', data.endDate));
+    messages.push(validateRequiredField('Location', data.location));
+    messages.push(validateRequiredField('Description', data.description));
     messages.push(validateDateRange(data.startDate, data.endDate));
 
     return _.filter(messages, function(msg){ return msg.isValid===false });
