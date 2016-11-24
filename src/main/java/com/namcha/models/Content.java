@@ -13,7 +13,6 @@ public class Content {
 	private Date endDate;
 	private String location;
 	private String description;
-	private String button;
 
 	public int getCount() {
 		return count;

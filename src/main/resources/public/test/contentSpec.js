@@ -37,9 +37,9 @@ describe("content", function() {
     describe("when buildMessage is called", function() {
 
         it("should return concatenated message", function() {
-            var message = buildMessage([createMessage('Please specify category.'), createMessage('Please specify location.')]);
+            var message = buildMessage([createMessage('กรุณากรอก category.'), createMessage('กรุณากรอก location.')]);
 
-            expect(message).toBe("Please specify category.</br>Please specify location.");
+            expect(message).toBe("กรุณากรอก category.</br>กรุณากรอก location.");
         });
 
      });

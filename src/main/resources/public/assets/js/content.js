@@ -40,11 +40,16 @@ function submitForm(){
 
 function validate(data){
     var messages = [];
+
     messages.push(validateRequiredField('category', data.category));
     messages.push(validateRequiredField('eventName', data.eventName));
+    messages.push(validateRequiredField('startDate', data.startDate));
+    messages.push(validateRequiredField('endDate', data.endDate));
+    messages.push(validateRequiredField('location', data.location));
+    messages.push(validateRequiredField('description', data.description));
 
-    // Other field validate go here
-    return messages;
+    return _.filter(messages, function(msg){ return !_.isUndefined(msg); });
+
 }
 
 function validateRequiredField(fieldName, fieldValue) {
