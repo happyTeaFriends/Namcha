@@ -19,5 +19,5 @@
 })(jQuery);
 
 function isEmpty(inputString) {
-    return inputString.lenght == 0;
+    return inputString.length == 0;
 }
