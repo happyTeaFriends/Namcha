@@ -15,4 +15,9 @@
         });
         return o;
     };
+
 })(jQuery);
+
+function isEmpty(inputString) {
+    return inputString.lenght == 0;
+}
