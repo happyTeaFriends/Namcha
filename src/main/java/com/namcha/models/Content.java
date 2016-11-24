@@ -5,6 +5,7 @@ import java.util.Date;
 import com.namcha.utils.DateUtil;
 
 public class Content {
+	private int count;
 	private String id;
 	private String category;
 	private String eventName;
@@ -13,6 +14,14 @@ public class Content {
 	private String location;
 	private String description;
 	private String button;
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
 
 	public String getId() {
 		return id;
@@ -70,7 +79,10 @@ public class Content {
 		this.description = description;
 	}
 
-	public String getButton() { return "<a href=\"event-view-share.html?id=" + this.getId() + "\"><button type=\"button\" class=\"btn btn-default\">View</button></a>"; }
+	public String getButton() {
+		String btnHTML = "<input type='button' class='btn btn-default' id='viewBtn" + count + "' onclick=\"window.location='event-view-share.html?share=true&id="+this.getId()+"'\" value='View'/>";
+		return  btnHTML;
+	}
 
 	public String getStartDateStr() { return DateUtil.convertToString(this.startDate); }
 

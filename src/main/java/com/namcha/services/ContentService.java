@@ -30,9 +30,11 @@ public class ContentService {
 	public List<Content> retrieve(){
 
 		List<Content> contents = new ArrayList<Content>();
-
+		int count = 0;
 		for (Content content: contentRepository.findAll())
 		{
+			count++;
+			content.setCount(count);
 			contents.add(content);
 		}
 

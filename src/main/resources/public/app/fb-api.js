@@ -71,7 +71,7 @@
         		if (resp.access_token) {
         			FB.api('/' + page_id + '/feed', 'post', {
         				message : $('#postText').val(),//constructMessage()
-        				link : 'http://www.youtube.com',
+        				link : $('#postLink').val(),
         				access_token : resp.access_token
         			}, function(response) {
         				console.log(response);
@@ -92,7 +92,7 @@
 
     constructMessage: function(){
     	var message = 'Course: ';
-    	message += $('#eventname').val();
+    	message += $('#eventName').val();
     	message += ' period: ';
     	message += $('#start-date-field').val() + ' to ' + $('#end-date-field').val();
     	message += ' at: ';
