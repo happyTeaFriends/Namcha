@@ -17,7 +17,3 @@
     };
 
 })(jQuery);
-
-function isEmpty(inputString) {
-    return inputString.length == 0;
-}

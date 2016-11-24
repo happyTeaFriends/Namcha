@@ -80,7 +80,7 @@ public class Content {
 	}
 
 	public String getButton() {
-		String btnHTML = "<input type='button' class='btn btn-default' id='viewBtn" + count + "' onclick=\"window.location='event-view-share.html?id="+this.getId()+"'\" value='View'/>";
+		String btnHTML = "<input type='button' class='btn btn-default' id='viewBtn" + count + "' onclick=\"window.location='event-view-share.html?share=true&id="+this.getId()+"'\" value='View'/>";
 		return  btnHTML;
 	}
 

@@ -31,7 +31,7 @@ function submitForm(){
 
     var messages = validate(data);
     if(_.findWhere(messages, {isValid: false})) {
-        alert(buildMessage(messages));
+        showModal(buildMessage(messages));
         return;
     }
 
@@ -42,6 +42,7 @@ function validate(data){
     var messages = [];
     messages.push(validateRequiredField('category', data.category));
     messages.push(validateRequiredField('eventName', data.eventName));
+
     // Other field validate go here
     return messages;
 }
@@ -49,7 +50,7 @@ function validate(data){
 function validateRequiredField(fieldName, fieldValue) {
 
     if(!fieldValue){
-       return createMessage('Please specify ' + fieldName);
+       return createMessage('กรุณากรอก ' + fieldName);
     }
 
     return createMessage();

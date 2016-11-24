@@ -4,8 +4,7 @@
     <title>Namcha</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script data-main="app" src="lib/requirejs/require.js"></script>
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -18,49 +17,136 @@
     }
 
 </style>
+<script src="lib/jquery/dist/jquery.min.js"></script>
+<script src="lib/moment/min/moment.min.js"></script>
+<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/app/fb-api.js"></script>
+<script type="text/javascript">
+
+
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+//For Retrieve Content
+function retrieveContent(id){
+	$.ajax({
+	      type: "GET",
+	      url: "content/" + id,
+	      success: retrieveSuccess,
+	      error: retrieveError,
+	      dataType: 'json'
+	    });
+}
+// Put Content Data to Fields
+function retrieveSuccess(data){
+	//console.log(data);
+	$('#category').val(data.category.toLowerCase().replace(/\b[a-z]/g, function(letter) { return letter.toUpperCase();}));
+	$('#eventName').val(data.eventName);
+	$('#start-date-field').val(moment(data.startDate).format('DD/MM/YYYY'));
+	$('#end-date-field').val(moment(data.endDate).format('DD/MM/YYYY'));
+	$('#location').val(data.location);
+	$('#description').val(data.description);
+	var url = '' + window.location.origin + '/event-view-share.html?id=' + data.id;
+	if (url.includes('localhost')) {
+		url = url.replace('http://localhost:8080','https://namcha-dev.herokuapp.com');
+		alert(url);
+	}
+	$('#postLink').val(url);
+}
+function retrieveError(){
+    alert("error");
+}
+
+// Generate URL Link and put to text field
+function generateLinkURL(id){
+	var url = '' + window.location.origin + '?id=' + id;
+	alert($('#postLink').val());
+	$('#postLink').val(id);
+	alert($('#postLink').val());
+}
+
+//Show/Hide Facebook Post Botton 
+function showHidePostBtn(share){
+	if(share){
+		$('#facebookModalBtn').show();
+	} else {
+		$('#facebookModalBtn').hide();
+	}
+}
+
+
+var isShare = getUrlParameter('share');
+var contentId = getUrlParameter('id');
+
+
+showHidePostBtn(isShare);
+
+//console.log(contentId);
+retrieveContent(contentId);
+
+//generateLinkURL(contentId);
+
+
+</script>
 
 <div id="page-wrapper">
         <div class="container">
-            <h2>Add Event List</h2>
+            <h2>View Event Detail</h2>
             <form>
                 <div class="form-group">
-                    <label for="category">Category:</label>
-                    <select class="form-control" name="category" id="category">
-                        <option>Please select</option>
-                        <option value="programming">Programming</option>
-                        <option value="marketing">Marketing</option>
-                        <option value="testing">Testing</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="eventname">Event Name:</label>
-                    <input type="text" class="form-control" id="eventname" placeholder="Please enter the event name">
-                </div>
-                <div class="form-group">
-                    <label for="start-date" class="col-md-2 control-label">Start Date:</label>
-                    <div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="start-date" data-link-format="yyyy-mm-dd">
-                        <input id="start-date-field" class="form-control" size="16" type="text" value="" >
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                    </div>
-                    <input type="hidden" id="start-date" value="" />
-                    <label for="end-date" class="col-md-2 control-label">End Date:</label>
-                    <div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="end-date" data-link-format="yyyy-mm-dd">
-                        <input id="end-date-field" class="form-control" size="16" type="text" value="" >
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                    </div>
-                    <input type="hidden" id="end-date" value="" /><br/>
-                </div>
-                <div class="form-group">
-                    <label for="location">Location:</label>
-                    <input type="text" class="form-control" id="location" placeholder="Training Location">
-                </div>
-                <div class="form-group">
-                    <label for="description">Description:</label>
-                    <textarea class="form-control" rows="3" id="description"></textarea>
-                </div>
-                <button type="button" class="btn btn-primary" id="facebookModal" data-toggle="modal" data-target="#myModal">Post</button>
+	                <label for="category">Category:</label>
+	                <input type="text" class="form-control" id="category" name="category" placeholder="Category" readonly/>
+	            </div>
+	            <div class="form-group">
+	                <label for="eventname">Event Name:</label>
+	                <input type="text" class="form-control" id="eventName" name="eventName" placeholder="Please enter the event name" readonly/>
+	            </div>
+	            <div class="row">
+	                <div class="col-md-6">
+	                    <label for="startDate" class="col-md-3 control-label">Start Date:</label>
+	                    <div class='input-group date' id='startDate'>
+	                        <input id='start-date-field' type='text' class="form-control" name="startDate" readonly/>
+	                        <span class="input-group-addon">
+	                        <span class="glyphicon glyphicon-calendar"></span>
+	                    </span>
+	                    </div>
+	                </div>
+	                <div class="col-md-6">
+	                    <label for="endDate" class="col-md-3 control-label">End Date:</label>
+	                    <div class='input-group date' id='endDate'>
+	                        <input id='end-date-field' type='text' class="form-control" name="endDate" readonly/>
+	                        <span class="input-group-addon">
+	                        <span class="glyphicon glyphicon-calendar"></span>
+	                    </span>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <label for="location">Location:</label>
+	                <input type="text" class="form-control" id="location" name="location" placeholder="Training Location" readonly/>
+	            </div>
+	            <div class="form-group">
+	
+	                <label for="description">Description:</label>
+	                <textarea class="form-control" rows="3" id="description" name="description" readonly></textarea>
+	            </div>
+	            <br/>
+		   
+		    	<input type="hidden" id="postLink" name="postLink"></input>
+	            <div id='facebookModalBtn'>
+	            	<button type="button" class="btn btn-primary" id="facebookModal" data-toggle="modal" data-target="#myModal">Post</button>
+	            </div>
             </form>
         </div>
 </div>
@@ -72,7 +158,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Post To Facebook Page</h4>
       </div>
       <div class="modal-body">
         <div class="panelHolder" id="fbLoginBtn">
@@ -92,21 +178,5 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="/app/fb-api.js"></script>
-
 </body>
 </html>
