@@ -70,7 +70,7 @@ public class Content {
 		this.description = description;
 	}
 
-	public String getButton() { return "<a href=\"event-view-share.html?id=" + this.getId() + "\"><button type=\"button\" class=\"btn btn-default\">View</button></a>"; }
+	public String getButton() { return "<a href=\"event-view-share.html?id=" + this.getId() + "&share=true\"><button type=\"button\" class=\"btn btn-default\">View</button></a>"; }
 
 	public String getStartDateStr() { return DateUtil.convertToString(this.startDate); }
 
