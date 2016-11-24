@@ -9,8 +9,8 @@
 
     <!--<link rel="stylesheet" href="assets/css/bootstrap.min.css">-->
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/bootstrap-table/dist/bootstrap-table.css">
 
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>-->
@@ -20,18 +20,18 @@
 
 <!--<div id="event-list"></div>-->
 <div class="container">
-    <h2>Events</h2>
+    <h2>Upcoming Events from Us!</h2>
     <p></p>
     <!--<table class="table table-hover" data-toggle="table" id="table" data-url="data.json">-->
     <table class="table table-hover" id="table">
-        <thead>
+        <thead class="thead-inverse">
         <tr>
-            <th data-field="id">#</th>
-            <th data-field="category">Category</th>
-            <th data-field="eventName">Event Name</th>
-            <th data-field="startDate">Start Date</th>
-            <th data-field="endDate">End Date</th>
-            <th></th>
+            <!--<th style="vertical-align: middle;" data-field="id">#</th>-->
+            <th width="20%" style="vertical-align: middle" data-field="category">Category</th>
+            <th width="40%" style="vertical-align: middle" data-field="eventName">Event Name</th>
+            <th width="10%" style="vertical-align: middle" data-field="startDateStr">Start Date</th>
+            <th width="10%" style="vertical-align: middle" data-field="endDateStr">End Date</th>
+            <th width="20%" style="vertical-align: middle" data-field="button"></th>
         </tr>
         </thead>
     </table>
@@ -42,6 +42,7 @@
         <a href="event-form.html" class="btn btn-primary">เพิ่ม</a>
     </div>
 </div>
+<br>
 
 
 <script>
@@ -60,16 +61,23 @@
                     data: data
                 });
 
-                //display(data);
             },
             error : function(e) {
                 console.log("ERROR: ", e);
-                //display(e);
             },
             done : function(e) {
                 console.log("DONE");
             }
         });
+
+        /*var table = document.getElementById('table');
+        var rows = table.getElementsByTagName('tr');
+        var text = 'textContent' in document ? 'textContent' : 'innerText';
+        for (var i = 0, len = rows.length; i < len; i++){
+            console.log("rows.length: " + rows.length)
+            rows[i].children[0][text] = i + ': ' + rows[i].children[0][text];
+        }*/
+
     }
 </script>
 </body>

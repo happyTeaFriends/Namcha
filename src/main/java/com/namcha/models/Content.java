@@ -2,6 +2,8 @@ package com.namcha.models;
 
 import java.util.Date;
 
+import com.namcha.utils.DateUtil;
+
 public class Content {
 	private String id;
 	private String category;
@@ -10,6 +12,7 @@ public class Content {
 	private Date endDate;
 	private String location;
 	private String description;
+	private String button;
 
 	public String getId() {
 		return id;
@@ -66,4 +69,10 @@ public class Content {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public String getButton() { return "<a href=\"event-view-share.html?id=" + this.getId() + "\"><button type=\"button\" class=\"btn btn-default\">View</button></a>"; }
+
+	public String getStartDateStr() { return DateUtil.convertToString(this.startDate); }
+
+	public String getEndDateStr() { return DateUtil.convertToString(this.endDate); }
 }
