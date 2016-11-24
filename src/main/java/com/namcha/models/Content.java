@@ -2,7 +2,6 @@ package com.namcha.models;
 
 import java.util.Date;
 
-import com.namcha.utils.DateUtil;
 
 public class Content {
 	private int count;
@@ -83,7 +82,4 @@ public class Content {
 		return  btnHTML;
 	}
 
-	public String getStartDateStr() { return DateUtil.convertToString(this.startDate); }
-
-	public String getEndDateStr() { return DateUtil.convertToString(this.endDate); }
 }
