@@ -26,12 +26,12 @@
     <table class="table table-hover" id="table">
         <thead class="thead-inverse">
         <tr>
-            <!--<th style="vertical-align: middle;" data-field="id">#</th>-->
-            <th width="20%" style="vertical-align: middle" data-field="category">Category</th>
-            <th width="40%" style="vertical-align: middle" data-field="eventName">Event Name</th>
-            <th width="10%" style="vertical-align: middle" data-field="startDateStr">Start Date</th>
-            <th width="10%" style="vertical-align: middle" data-field="endDateStr">End Date</th>
-            <th width="20%" style="vertical-align: middle" data-field="button"></th>
+            <th>#</th>
+            <th width="20%" data-field="category">Category</th>
+            <th width="40%" data-field="eventName">Event Name</th>
+            <th width="10%" data-field="startDateStr">Start Date</th>
+            <th width="10%" data-field="endDateStr">End Date</th>
+            <th width="20%" data-field="button"></th>
         </tr>
         </thead>
     </table>
@@ -39,13 +39,22 @@
 </div>
 <div class="container">
     <div class="row">
-        <a href="event-form.html" class="btn btn-primary">เพิ่ม</a>
+        <a href="event-form.html" class="btn btn-primary">Add Event</a>
     </div>
 </div>
 <br>
 
 
 <script>
+    var addSerialNumber = function () {
+        $('table tr').each(function(index) {
+            $(this).find('td:nth-child(1)').html(index);
+        });
+        $("th").css("color", "#ffffff");
+        $("th").css("background-color", "#3275ad");
+        $("td").css("vertical-align", "middle");
+    };
+
     function onloadListEvents(){
         $.ajax({
             type : "GET",
@@ -60,7 +69,7 @@
                 $('#table').bootstrapTable({
                     data: data
                 });
-
+                addSerialNumber();
             },
             error : function(e) {
                 console.log("ERROR: ", e);
@@ -69,7 +78,6 @@
                 console.log("DONE");
             }
         });
-
         /*var table = document.getElementById('table');
         var rows = table.getElementsByTagName('tr');
         var text = 'textContent' in document ? 'textContent' : 'innerText';
@@ -77,6 +85,7 @@
             console.log("rows.length: " + rows.length)
             rows[i].children[0][text] = i + ': ' + rows[i].children[0][text];
         }*/
+
 
     }
 </script>
