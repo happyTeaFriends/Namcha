@@ -3,7 +3,7 @@
 
 module.exports = function(config) {
   config.set({
-	browsers: ['PhantomJS'],
+	browsers: ['Chrome'],
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
@@ -18,8 +18,8 @@ module.exports = function(config) {
       'node_modules/jasmine-ajax/lib/mock-ajax.js',
       'src/main/resources/public/lib/jquery/dist/jquery.js',
       'src/main/resources/public/lib/underscore/underscore.js',
-      'src/main/resources/public/assets/js/*.js',
-      'src/main/resources/public/test/*Spec.js'
+      'src/main/resources/public/assets/**/*.js',
+      'src/main/resources/public/test/**/*Spec.js'
     ],
 
 
