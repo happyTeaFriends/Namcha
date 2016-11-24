@@ -1,15 +1,19 @@
 package com.namcha.models;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
 public class Content {
+	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 	private int count;
 	private String id;
 	private String category;
 	private String eventName;
 	private Date startDate;
 	private Date endDate;
+	private String startDateStr;
+	private String endDateStr;
 	private String location;
 	private String description;
 
@@ -59,6 +63,14 @@ public class Content {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	public String getStartDateStr() {
+		return dateFormat.format(startDate);
+	}
+
+	public String getEndDateStr() {
+		return dateFormat.format(endDate);
 	}
 
 	public String getLocation() {
