@@ -17,6 +17,7 @@ module.exports = function(config) {
     files: [
       'node_modules/jasmine-ajax/lib/mock-ajax.js',
       'src/main/resources/public/lib/jquery/dist/jquery.js',
+      'src/main/resources/public/lib/underscore/underscore.js',
       'src/main/resources/public/assets/js/*.js',
       'src/main/resources/public/test/*Spec.js'
     ],

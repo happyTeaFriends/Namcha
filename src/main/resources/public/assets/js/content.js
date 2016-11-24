@@ -28,20 +28,33 @@ function createError(){
 function submitForm(){
     var data = $('#contentForm').serializeFormJSON();
     console.log("Data="+data);
-    if(isValid(data)){
-        createContent();
+
+    var messages = validate(data);
+    if(_.findWhere(messages, {isValid: false})) {
+        alert(messages);
+        return;
     }
+
+    createContent();
 }
 
-function isValid(data){
-	var error = {};
-	if (isCategoryNotValid(data.category)) {
-		error.append("Category is empty. (เลือกด้วยนะครัชชชชช :P)");
-	}
-    //validate here
-    return true;
+function validate(data){
+    var messages = [];
+    messages.push(validateRequiredField('category', data.category));
+    messages.push(validateRequiredField('eventName', data.eventName));
+    // Other field validate go here
+    return messages;
 }
 
-function isCategoryNotValid(category) {
-	return isEmpty(category);
+function validateRequiredField(fieldName, fieldValue) {
+
+    if(!fieldValue){
+       return createMessage('Please specify ' + fieldName);
+    }
+
+    return createMessage();
+}
+
+function createMessage(msg) {
+    return { errorMsg: msg, isValid: !msg };
 }

@@ -18,6 +18,7 @@
     "requirejs": "^2.3.2",
     "eonasdan-bootstrap-datetimepicker": "^4.17.43",
     "moment": "^2.17.0",
-    "bootstrap-table": "^1.11.0"
+    "bootstrap-table": "^1.11.0",
+    "underscore": "^1.8.3"
   }
 }
