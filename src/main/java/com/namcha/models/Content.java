@@ -1,15 +1,17 @@
 package com.namcha.models;
 
-import java.time.OffsetDateTime;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Content {
 	private String id;
 	private String category;
 	private String eventName;
-	private OffsetDateTime startDate;
-	private OffsetDateTime endDate;
+	private Date startDate;
+	private Date endDate;
 	private String location;
 	private String description;
+	private String button;
 
 	public String getId() {
 		return id;
@@ -35,19 +37,19 @@ public class Content {
 		this.eventName = eventName;
 	}
 
-	public OffsetDateTime getStartDate() {
+	public Date getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(OffsetDateTime startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 
-	public OffsetDateTime getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(OffsetDateTime endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 
@@ -66,4 +68,10 @@ public class Content {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public String getButton() { return "<a href=\"event-view-share.html?id=" + this.getId() + "\"><button type=\"button\" class=\"btn btn-default\">View</button></a>"; }
+
+	public String getStartDateStr() { return new SimpleDateFormat("dd/MM/yyyy").format(this.startDate); }
+
+	public String getEndDateStr() { return new SimpleDateFormat("dd/MM/yyyy").format(this.endDate); }
 }

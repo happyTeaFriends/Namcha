@@ -7,11 +7,13 @@
     "node": "6.9.1"
   },
   "scripts": {
-    "test": "karma start"
+    "test": "karma start",
+    "postinstall": "bower install"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "jasmine-ajax": "^3.2.0",
     "jasmine-core": "^2.5.2",
     "karma": "^1.3.0",
     "karma-chrome-launcher": "^2.0.0",

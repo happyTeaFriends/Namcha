@@ -1,13 +1,13 @@
 package com.namcha.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.namcha.models.Content;
 import com.namcha.repositories.ContentRepository;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class ContentService {
@@ -23,6 +23,10 @@ public class ContentService {
 		return contentRepository.save(content);
 	}
 
+	public Content get(String id) {
+		return contentRepository.findOne(id);
+	}
+	
 	public List<Content> retrieve(){
 
 		List<Content> contents = new ArrayList<Content>();

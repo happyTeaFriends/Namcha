@@ -1,12 +1,12 @@
 package com.namcha.com.namcha.controller;
 
 import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
@@ -47,9 +47,16 @@ public class ContentControllerTest {
 
 	@Test
 	public void getAllContent() {
-
-		List<Content> contents = contentController.getAll();
-
-		assertThat(contents, notNullValue());
+		// Arrange
+		List<Content> contents = new ArrayList<Content>();
+		contents.add(new Content());
+		when(contentService.retrieve()).thenReturn(contents);
+		
+		// Action
+		List<Content> actualResult = contentController.getAll();
+		
+		// Assert
+		verify(contentService, times(1)).retrieve();
+		assertEquals(contents.size(), actualResult.size());
 	}
 }

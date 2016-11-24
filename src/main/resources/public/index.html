@@ -9,27 +9,29 @@
 
     <!--<link rel="stylesheet" href="assets/css/bootstrap.min.css">-->
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+    <link rel="stylesheet" href="lib/bootstrap-table/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/bootstrap-table/dist/bootstrap-table.css">
 
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>-->
 </head>
-<body>
+<body onload="onloadListEvents()">
 <!--<h1 id="response"></h1>-->
 
 <!--<div id="event-list"></div>-->
 <div class="container">
     <h2>Events</h2>
     <p></p>
-    <table class="table table-hover" data-toggle="table" id="table" data-url="data.json">
-        <thead>
+    <!--<table class="table table-hover" data-toggle="table" id="table" data-url="data.json">-->
+    <table class="table table-hover" id="table">
+        <thead class="thead-inverse">
         <tr>
-            <th data-field="id">#</th>
-            <th data-field="eventName">Event Name</th>
-            <th data-field="startDt">Start Date</th>
-            <th data-field="endDt">End Date</th>
-            <th></th>
+            <!--<th style="vertical-align: middle;" data-field="id">#</th>-->
+            <th width="20%" style="vertical-align: middle" data-field="category">Category</th>
+            <th width="40%" style="vertical-align: middle" data-field="eventName">Event Name</th>
+            <th width="10%" style="vertical-align: middle" data-field="startDateStr">Start Date</th>
+            <th width="10%" style="vertical-align: middle" data-field="endDateStr">End Date</th>
+            <th width="20%" style="vertical-align: middle" data-field="button"></th>
         </tr>
         </thead>
     </table>
@@ -43,7 +45,32 @@
 
 
 <script>
+    function onloadListEvents(){
+        $.ajax({
+            type : "GET",
+            contentType : "application/json",
+            url : "/content",
+            //data : JSON.stringify(data),
+            dataType : 'json',
+            timeout : 100000,
+            success : function(data) {
+                console.log("SUCCESS: ", data);
+                var $table = $('#table');
+                $('#table').bootstrapTable({
+                    data: data
+                });
 
+                //display(data);
+            },
+            error : function(e) {
+                console.log("ERROR: ", e);
+                //display(e);
+            },
+            done : function(e) {
+                console.log("DONE");
+            }
+        });
+    }
 </script>
 </body>
 

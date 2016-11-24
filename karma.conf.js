@@ -15,6 +15,9 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'node_modules/jasmine-ajax/lib/mock-ajax.js',
+      'src/main/resources/public/lib/jquery/dist/jquery.js',
+      'src/main/resources/public/assets/js/*.js',
       'src/main/resources/public/test/*Spec.js'
     ],
 
