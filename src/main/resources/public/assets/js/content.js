@@ -1,7 +1,8 @@
 function registerSubmitEvent(){
     $('#contentForm').submit(function(event){
         event.preventDefault();
-        createContent();
+
+        submitForm();
     });
 }
 
@@ -22,4 +23,10 @@ function createSuccess(){
 
 function createError(){
     alert("error");
+}
+
+function submitForm(){
+    var data = $('#contentForm').serializeFormJSON();
+    console.log("Data="+data);
+    createContent();
 }
