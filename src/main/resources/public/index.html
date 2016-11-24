@@ -50,6 +50,7 @@
         $('table tr').each(function(index) {
             $(this).find('td:nth-child(1)').html(index);
         });
+        //$("th").css("text-align", "center");
         $("th").css("color", "#ffffff");
         $("th").css("background-color", "#3275ad");
         $("td").css("vertical-align", "middle");
@@ -67,7 +68,8 @@
                 console.log("SUCCESS: ", data);
                 var $table = $('#table');
                 $('#table').bootstrapTable({
-                    data: data
+                    data: data,
+                    pagination: true
                 });
                 addSerialNumber();
             },
