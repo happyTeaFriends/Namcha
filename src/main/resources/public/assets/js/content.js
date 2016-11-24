@@ -31,7 +31,7 @@ function submitForm(){
 
     var messages = validate(data);
     if(_.findWhere(messages, {isValid: false})) {
-        alert(messages);
+        alert(buildMessage(messages));
         return;
     }
 
@@ -57,4 +57,8 @@ function validateRequiredField(fieldName, fieldValue) {
 
 function createMessage(msg) {
     return { errorMsg: msg, isValid: !msg };
+}
+
+function buildMessage(messages){
+    return _.pluck(messages, 'errorMsg').join('</br>');
 }
