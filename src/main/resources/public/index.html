@@ -4,6 +4,7 @@
     <script src="lib/jquery/dist/jquery.min.js"></script>
     <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="lib/bootstrap-table/dist/bootstrap-table.js"></script>
+    <script src="lib/moment/min/moment.min.js"></script>
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="lib/bootstrap-table/dist/bootstrap-table.css">
 
@@ -24,8 +25,8 @@
             <th data-field="count">#</th>
             <th width="20%" data-field="category">Category</th>
             <th width="40%" data-field="eventName">Event Name</th>
-            <th width="10%" data-field="startDateStr">Start Date</th>
-            <th width="10%" data-field="endDateStr">End Date</th>
+            <th width="10%" data-field="startDate" data-formatter="dateFormatter">Start Date</th>
+            <th width="10%" data-field="endDate" data-formatter="dateFormatter">End Date</th>
             <th width="20%" data-field="button"></th>
         </tr>
         </thead>
@@ -49,6 +50,10 @@
         $("th").css("color", "#ffffff");
         $("th").css("background-color", "#3275ad");
         $("td").css("vertical-align", "middle");
+    };
+
+    function dateFormatter(value, row) {
+        return moment(value).format('DD/MM/YYYY');
     };
 
     function onloadListEvents(){
