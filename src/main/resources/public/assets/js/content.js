@@ -48,7 +48,7 @@ function validate(data){
     messages.push(validateRequiredField('location', data.location));
     messages.push(validateRequiredField('description', data.description));
 
-    return _.filter(messages, function(msg){ return !_.isUndefined(msg); });
+    return _.filter(messages, function(msg){ return msg.isValid===false });
 
 }
 
