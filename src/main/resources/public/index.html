@@ -2,22 +2,14 @@
 <html>
 <head>
     <script src="lib/jquery/dist/jquery.min.js"></script>
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>-->
     <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="lib/bootstrap-table/dist/bootstrap-table.js"></script>
-
-    <!--<link rel="stylesheet" href="assets/css/bootstrap.min.css">-->
-
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="lib/bootstrap-table/dist/bootstrap-table.css">
 
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>-->
 </head>
 <body onload="onloadListEvents()">
-<!--<h1 id="response"></h1>-->
 
-<!--<div id="event-list"></div>-->
 <div class="container">
     <h2>Got Something to Share?</h2>
     <a href="event-form.html" id="addBtn" class="btn btn-primary">Add Event</a>
@@ -26,11 +18,10 @@
 <div class="container">
     <h2>Upcoming Events from Us!</h2>
     <p></p>
-    <!--<table class="table table-hover" data-toggle="table" id="table" data-url="data.json">-->
     <table class="table table-hover" id="table">
         <thead class="thead-inverse">
         <tr>
-            <th>#</th>
+            <th data-field="count">#</th>
             <th width="20%" data-field="category">Category</th>
             <th width="40%" data-field="eventName">Event Name</th>
             <th width="10%" data-field="startDateStr">Start Date</th>
@@ -45,10 +36,10 @@
 
 
 <script>
-    var addSerialNumber = function () {
-        $('table tr').each(function(index) {
+    var formatTable = function () {
+        /*$('table tr').each(function(index) {
             $(this).find('td:nth-child(1)').html(index);
-        });
+        });*/
         //$("th").css("text-align", "center");
         $("th").css("color", "#ffffff");
         $("th").css("background-color", "#3275ad");
@@ -66,11 +57,12 @@
             success : function(data) {
                 console.log("SUCCESS: ", data);
                 var $table = $('#table');
-                $('#table').bootstrapTable({
+                $table.bootstrapTable({
                     data: data,
                     pagination: true
                 });
-                addSerialNumber();
+
+                formatTable();
             },
             error : function(e) {
                 console.log("ERROR: ", e);
@@ -79,15 +71,6 @@
                 console.log("DONE");
             }
         });
-        /*var table = document.getElementById('table');
-        var rows = table.getElementsByTagName('tr');
-        var text = 'textContent' in document ? 'textContent' : 'innerText';
-        for (var i = 0, len = rows.length; i < len; i++){
-            console.log("rows.length: " + rows.length)
-            rows[i].children[0][text] = i + ': ' + rows[i].children[0][text];
-        }*/
-
-
     }
 </script>
 </body>
