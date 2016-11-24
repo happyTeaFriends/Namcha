@@ -1,6 +1,5 @@
 package com.namcha.models;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.namcha.utils.DateUtil;
