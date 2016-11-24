@@ -20,7 +20,7 @@
 
 <!--<div id="event-list"></div>-->
 <div class="container">
-    <h2>Events</h2>
+    <h2>Upcoming Events from Us!</h2>
     <p></p>
     <!--<table class="table table-hover" data-toggle="table" id="table" data-url="data.json">-->
     <table class="table table-hover" id="table">
@@ -42,6 +42,7 @@
         <a href="event-form.html" class="btn btn-primary">เพิ่ม</a>
     </div>
 </div>
+<br>
 
 
 <script>
@@ -60,16 +61,23 @@
                     data: data
                 });
 
-                //display(data);
             },
             error : function(e) {
                 console.log("ERROR: ", e);
-                //display(e);
             },
             done : function(e) {
                 console.log("DONE");
             }
         });
+
+        /*var table = document.getElementById('table');
+        var rows = table.getElementsByTagName('tr');
+        var text = 'textContent' in document ? 'textContent' : 'innerText';
+        for (var i = 0, len = rows.length; i < len; i++){
+            console.log("rows.length: " + rows.length)
+            rows[i].children[0][text] = i + ': ' + rows[i].children[0][text];
+        }*/
+
     }
 </script>
 </body>
