@@ -46,7 +46,7 @@ public class ContentServiceTest {
 		Content item = new Content();
 		List<Content> contents = new ArrayList<>();
 		contents.add(item);
-		when(contentRepository.findAll()).thenReturn(contents);
+		when(contentRepository.findAllByOrderByStartDateAsc()).thenReturn(contents);
 
 		List<Content> result = contentService.retrieve();
 
