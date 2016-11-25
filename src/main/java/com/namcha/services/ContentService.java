@@ -15,10 +15,6 @@ public class ContentService {
 	private ContentRepository contentRepository;
 
 	public Content create(Content content) {
-		if (content == null) {
-			throw new IllegalArgumentException();
-		}
-
 		return contentRepository.save(content);
 	}
 
