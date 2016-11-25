@@ -33,7 +33,7 @@ function retrieveSuccess(data){
 	$('#location').val(data.location);
 	$('#description').val(data.description);
 	var url = '' + window.location.origin + '/event-view-share.html?id=' + data.id;
-	if (url.includes('localhost')) {
+	if (url.indexOf('localhost') > -1) {
 		url = url.replace('http://localhost:8080','https://namcha-dev.herokuapp.com');
 	}
 	$('#postLink').val(url);

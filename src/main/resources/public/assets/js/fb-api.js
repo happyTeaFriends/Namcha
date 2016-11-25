@@ -20,7 +20,8 @@
     logInFB: function(){
         window.fbAsyncInit = function() {
                     	FB.init({
-                    		appId : '248154305601002',
+                    		appId : '331009663938529',
+
                     		status : true, // check login status
                     		cookie : true, // enable cookies to allow the server to access the session
                     		xfbml : true // parse XFBML
@@ -57,7 +58,7 @@
     },
 
     callFBPost: function(){
-        var page_id = '1140298966047448';
+        var page_id = '1812822755652310';
         FB.api('/' + page_id, {
         		fields : 'access_token'
         	}, function(resp) {
