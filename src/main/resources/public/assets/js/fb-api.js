@@ -2,7 +2,6 @@
     init: function(){
         facebookPost.loadFBSDK();
         facebookPost.logInFB();
-        facebookPost.setModalMessage();
     },
 
     loadFBSDK: function(){
@@ -50,12 +49,6 @@
                 };
     },
 
-    setModalMessage: function(){
-        $("#facebookModal").click(function(){
-        		$('#postText').val(facebookPost.constructMessage());
-        });
-    },
-
     postToFBPage: function(){
         $("#postBtn").click(function(){
         		facebookPost.callFBPost();
@@ -94,7 +87,11 @@
     	var message = 'Course: ';
     	message += $('#eventName').val();
     	message += ' period: ';
-    	message += $('#start-date-field').val() + ' to ' + $('#end-date-field').val();
+    	if (moment($('#start-date-field').val()).isSame(moment($('#end-date-field').val()))) {
+    		message += $('#start-date-field').val();
+    	} else {
+    		message += $('#start-date-field').val() + ' to ' + $('#end-date-field').val();
+    	}
     	message += ' at: ';
     	message += $('#location').val();
     	return message;

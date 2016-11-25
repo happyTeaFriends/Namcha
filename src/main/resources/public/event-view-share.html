@@ -17,88 +17,6 @@
     }
 
 </style>
-<script src="lib/jquery/dist/jquery.min.js"></script>
-<script src="lib/moment/min/moment.min.js"></script>
-<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/app/fb-api.js"></script>
-<script type="text/javascript">
-
-
-var getUrlParameter = function getUrlParameter(sParam) {
-    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
-
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
-
-        if (sParameterName[0] === sParam) {
-            return sParameterName[1] === undefined ? true : sParameterName[1];
-        }
-    }
-};
-//For Retrieve Content
-function retrieveContent(id){
-	$.ajax({
-	      type: "GET",
-	      url: "content/" + id,
-	      success: retrieveSuccess,
-	      error: retrieveError,
-	      dataType: 'json'
-	    });
-}
-// Put Content Data to Fields
-function retrieveSuccess(data){
-	//console.log(data);
-	$('#category').val(data.category.toLowerCase().replace(/\b[a-z]/g, function(letter) { return letter.toUpperCase();}));
-	$('#eventName').val(data.eventName);
-	$('#start-date-field').val(moment(data.startDate).format('DD/MM/YYYY'));
-	$('#end-date-field').val(moment(data.endDate).format('DD/MM/YYYY'));
-	$('#location').val(data.location);
-	$('#description').val(data.description);
-	var url = '' + window.location.origin + '/event-view-share.html?id=' + data.id;
-	if (url.includes('localhost')) {
-		url = url.replace('http://localhost:8080','https://namcha-dev.herokuapp.com');
-		alert(url);
-	}
-	$('#postLink').val(url);
-}
-function retrieveError(){
-    alert("error");
-}
-
-// Generate URL Link and put to text field
-function generateLinkURL(id){
-	var url = '' + window.location.origin + '?id=' + id;
-	alert($('#postLink').val());
-	$('#postLink').val(id);
-	alert($('#postLink').val());
-}
-
-//Show/Hide Facebook Post Botton 
-function showHidePostBtn(share){
-	if(share){
-		$('#facebookModalBtn').show();
-	} else {
-		$('#facebookModalBtn').hide();
-	}
-}
-
-
-var isShare = getUrlParameter('share');
-var contentId = getUrlParameter('id');
-
-
-showHidePostBtn(isShare);
-
-//console.log(contentId);
-retrieveContent(contentId);
-
-//generateLinkURL(contentId);
-
-
-</script>
 
 <div id="page-wrapper">
         <div class="container">
@@ -145,12 +63,12 @@ retrieveContent(contentId);
 		   
 		    	<input type="hidden" id="postLink" name="postLink"></input>
 	            <div id='facebookModalBtn'>
-	            	<button type="button" class="btn btn-primary" id="facebookModal" data-toggle="modal" data-target="#myModal">Post</button>
+	            	<button type="button" class="btn btn-primary" id="facebookModal" data-toggle="modal" onclick="postMessage();">Post</button>
 	            </div>
             </form>
         </div>
 </div>
-
+<div id="modalPanel"></div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -178,5 +96,20 @@ retrieveContent(contentId);
     </div>
   </div>
 </div>
+<script src="lib/jquery/dist/jquery.min.js"></script>
+<script src="lib/moment/min/moment.min.js"></script>
+<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="assets/js/fb-api.js"></script>
+<script src="assets/js/event-detail.js"></script>
+<script type="text/javascript">
+	
+	var url = window.location.search.substring(1);
+	var isShare = getUrlParameter(url, 'share');
+	var contentId = getUrlParameter(url, 'id');
+	
+	showHidePostBtn(isShare);
+	retrieveContent(contentId);
+    $( "#modalPanel" ).load( "assets/component/modal.html" );
+</script>
 </body>
 </html>
