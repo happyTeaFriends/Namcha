@@ -3,7 +3,8 @@
 
 module.exports = function(config) {
   config.set({
-	browsers: ['PhantomJS'],
+	//browsers: ['PhantomJS'],
+	browsers: ['Chrome'],
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
