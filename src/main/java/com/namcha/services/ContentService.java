@@ -11,28 +11,24 @@ import java.util.List;
 @Service
 public class ContentService {
 
-	@Autowired
-	private ContentRepository contentRepository;
+    @Autowired
+    private ContentRepository contentRepository;
 
-	public Content create(Content content) {
-		return contentRepository.save(content);
-	}
+    public Content create(Content content) {
+        return contentRepository.save(content);
+    }
 
-	public Content get(String id) {
-		return contentRepository.findOne(id);
-	}
-	
-	public List<Content> retrieve(){
+    public Content get(String id) {
+        return contentRepository.findOne(id);
+    }
 
-		List<Content> contents = new ArrayList<>();
-		int count = 0;
-		for (Content content: contentRepository.findAll())
-		{
-			count++;
-			content.setCount(count);
-			contents.add(content);
-		}
-
-		return contents;
-	}
+    public List<Content> retrieve() {
+        List<Content> contents = contentRepository.findAllByOrderByStartDateAsc();
+        int count = 0;
+        for (Content content : contents) {
+            count++;
+            content.setCount(count);
+        }
+        return contents;
+    }
 }
