@@ -41,16 +41,10 @@ public class ContentServiceTest {
 		assertNotNull(actualResult);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public void createWithNullShouldThrowException() {
-		// Action
-		contentService.create(null);
-	}
-
 	@Test
 	public void retrieveShouldGetResult() {
 		Content item = new Content();
-		List<Content> contents = new ArrayList<Content>();
+		List<Content> contents = new ArrayList<>();
 		contents.add(item);
 		when(contentRepository.findAll()).thenReturn(contents);
 
