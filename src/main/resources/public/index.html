@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Namcha</title>
+	<link rel="icon" href="assets/images/teaPot.png" sizes="16x16">
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="lib/bootstrap-table/dist/bootstrap-table.js"></script>
+    <script src="lib/moment/min/moment.min.js"></script>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/bootstrap-table/dist/bootstrap-table.css">
+
+</head>
+<body onload="onloadListEvents()">
+
+<div class="container">
+    <h2>Got Something to Share?</h2>
+    <a href="event-form.html" id="addBtn" class="btn btn-primary">Add Event</a>
+    <br>
+</div>
+<div class="container">
+    <h2>Upcoming Events from Us!</h2>
+    <p></p>
+    <table class="table table-hover" id="table">
+        <thead class="thead-inverse">
+        <tr>
+            <th data-field="count">#</th>
+            <th width="20%" data-field="category">Category</th>
+            <th width="40%" data-field="eventName">Event Name</th>
+            <th width="10%" data-field="startDate" data-formatter="dateFormatter">Start Date</th>
+            <th width="10%" data-field="endDate" data-formatter="dateFormatter">End Date</th>
+            <th width="20%" data-field="button"></th>
+        </tr>
+        </thead>
+    </table>
+    <br>
+</div>
+<br>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h3 style="text-align:center;">Cannot Retrieve Data From Database.</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    td {
+        vertical-align: middle !important;
+    }
+</style>
+
+<script src="assets/js/event-list.js"></script>
+<script src="assets/js/common.js"></script>
+<script src="assets/js/event-detail.js"></script>
+
+</body>
+
+</html>
+

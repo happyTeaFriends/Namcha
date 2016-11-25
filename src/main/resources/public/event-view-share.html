@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Namcha</title>
+    <meta charset="utf-8">
+    <link rel="icon" href="assets/images/teaPot.png" sizes="16x16">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<style>
+
+    #page-wrapper {
+
+        padding-top: 0;
+
+    }
+
+</style>
+
+<div id="page-wrapper">
+        <div class="container">
+            <h2>View Event Detail</h2>
+            <form>
+                <div class="form-group">
+	                <label for="category">Category:</label>
+	                <input type="text" class="form-control" id="category" name="category" placeholder="Category" readonly/>
+	            </div>
+	            <div class="form-group">
+	                <label for="eventname">Event Name:</label>
+	                <input type="text" class="form-control" id="eventName" name="eventName" placeholder="Please enter the event name" readonly/>
+	            </div>
+	            <div class="row">
+	                <div class="col-md-6">
+	                    <label for="startDate" class="col-md-3 control-label">Start Date:</label>
+	                    <div class='input-group date' id='startDate'>
+	                        <input id='start-date-field' type='text' class="form-control" name="startDate" readonly/>
+	                        <span class="input-group-addon">
+	                        <span class="glyphicon glyphicon-calendar"></span>
+	                    </span>
+	                    </div>
+	                </div>
+	                <div class="col-md-6">
+	                    <label for="endDate" class="col-md-3 control-label">End Date:</label>
+	                    <div class='input-group date' id='endDate'>
+	                        <input id='end-date-field' type='text' class="form-control" name="endDate" readonly/>
+	                        <span class="input-group-addon">
+	                        <span class="glyphicon glyphicon-calendar"></span>
+	                    </span>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <label for="location">Location:</label>
+	                <input type="text" class="form-control" id="location" name="location" placeholder="Training Location" readonly/>
+	            </div>
+	            <div class="form-group">
+	
+	                <label for="description">Description:</label>
+	                <textarea class="form-control" rows="3" id="description" name="description" readonly></textarea>
+	            </div>
+	            <br/>
+		   
+		    	<input type="hidden" id="postLink" name="postLink"></input>
+	            <div id='facebookModalBtn'>
+	            	<button type="button" class="btn btn-primary" id="facebookModal" data-toggle="modal" onclick="postMessage();">Post</button>
+	            </div>
+            </form>
+        </div>
+</div>
+<div id="modalPanel"></div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Post To Facebook Page</h4>
+      </div>
+      <div class="modal-body">
+        <div class="panelHolder" id="fbLoginBtn">
+		    <fb:login-button show-faces="true" width="200" max-rows="1" data-auto-logout-link="true"
+		                     data-scope="manage_pages, user_posts, publish_actions, publish_pages"></fb:login-button>
+		</div>
+		<div class="panelHolder">
+		    <label class="lblField">ข้อความ:</label>
+		    <br/>
+		    <textarea rows="3" cols="70%" id="postText"></textarea>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="postBtn">Post</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="lib/jquery/dist/jquery.min.js"></script>
+<script src="lib/moment/min/moment.min.js"></script>
+<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="assets/js/fb-api.js"></script>
+<script src="assets/js/event-detail.js"></script>
+<script type="text/javascript">
+	
+	var url = window.location.search.substring(1);
+	var isShare = getUrlParameter(url, 'share');
+	var contentId = getUrlParameter(url, 'id');
+	
+	showHidePostBtn(isShare);
+	retrieveContent(contentId);
+    $( "#modalPanel" ).load( "assets/component/modal.html" );
+</script>
+</body>
+</html>
